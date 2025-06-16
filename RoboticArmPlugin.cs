@@ -124,7 +124,7 @@ namespace RoboticArmPlugins
 
         public static int cr_destroy_robot(ref object? robotHandle)
         {
-            LogSdkCall(nameof(cr_destroy_robot), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_destroy_robot), robotHandle?.GetHashCode().ToString() ?? "null handle");
             if (robotHandle == null)
             {
                 Console.WriteLine("RoboticArmSdkMock: Attempted to destroy a null robot handle.");
@@ -148,7 +148,7 @@ namespace RoboticArmPlugins
 
         public static int cr_poweron(object? robotHandle)
         {
-            LogSdkCall(nameof(cr_poweron), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_poweron), robotHandle?.GetHashCode().ToString() ?? "null handle");
             if (IsHandleInvalid(robotHandle, nameof(cr_poweron))) return -1;
             // Add mock logic for power on if needed
             return 0; // Success
@@ -156,28 +156,28 @@ namespace RoboticArmPlugins
 
         public static int cr_poweroff(object? robotHandle)
         {
-            LogSdkCall(nameof(cr_poweroff), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_poweroff), robotHandle?.GetHashCode().ToString() ?? "null handle");
             if (IsHandleInvalid(robotHandle, nameof(cr_poweroff))) return -1;
             return 0; // Success
         }
 
         public static int cr_enable(object? robotHandle)
         {
-            LogSdkCall(nameof(cr_enable), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_enable), robotHandle?.GetHashCode().ToString() ?? "null handle");
             if (IsHandleInvalid(robotHandle, nameof(cr_enable))) return -1;
             return 0; // Success
         }
 
         public static int cr_disable(object? robotHandle)
         {
-            LogSdkCall(nameof(cr_disable), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_disable), robotHandle?.GetHashCode().ToString() ?? "null handle");
             if (IsHandleInvalid(robotHandle, nameof(cr_disable))) return -1;
             return 0; // Success
         }
 
         public static int cr_move_joint(object? robotHandle, PointControlPara pointControlPara, bool isBlock)
         {
-            LogSdkCall(nameof(cr_move_joint), robotHandle?.GetHashCode() ?? "null handle", pointControlPara, isBlock);
+            LogSdkCall(nameof(cr_move_joint), robotHandle?.GetHashCode().ToString() ?? "null handle", pointControlPara, isBlock);
             if (IsHandleInvalid(robotHandle, nameof(cr_move_joint))) return -1;
             if (pointControlPara.JointAngles == null) return -2; // Invalid parameter
             // Mock actual movement if necessary
@@ -186,7 +186,7 @@ namespace RoboticArmPlugins
 
         public static int cr_move_line(object? robotHandle, PointControlPara pointControlPara, bool isBlock)
         {
-            LogSdkCall(nameof(cr_move_line), robotHandle?.GetHashCode() ?? "null handle", pointControlPara, isBlock);
+            LogSdkCall(nameof(cr_move_line), robotHandle?.GetHashCode().ToString() ?? "null handle", pointControlPara, isBlock);
             if (IsHandleInvalid(robotHandle, nameof(cr_move_line))) return -1;
             if (pointControlPara.TargetPose == null) return -2; // Invalid parameter
             return 0; // Success
@@ -194,7 +194,7 @@ namespace RoboticArmPlugins
 
         public static int cr_get_stdDigitalIn(object? robotHandle, int index, out int value)
         {
-            LogSdkCall(nameof(cr_get_stdDigitalIn), robotHandle?.GetHashCode() ?? "null handle", index);
+            LogSdkCall(nameof(cr_get_stdDigitalIn), robotHandle?.GetHashCode().ToString() ?? "null handle", index);
             value = 1; // Default mock value
             if (IsHandleInvalid(robotHandle, nameof(cr_get_stdDigitalIn))) return -1;
             if (index < 0 || index > 15) { value = -1; return -2; } // Example: Invalid index
@@ -205,7 +205,7 @@ namespace RoboticArmPlugins
 
         public static int cr_set_stdDigitalOut(object? robotHandle, int index, int value)
         {
-            LogSdkCall(nameof(cr_set_stdDigitalOut), robotHandle?.GetHashCode() ?? "null handle", index, value);
+            LogSdkCall(nameof(cr_set_stdDigitalOut), robotHandle?.GetHashCode().ToString() ?? "null handle", index, value);
             if (IsHandleInvalid(robotHandle, nameof(cr_set_stdDigitalOut))) return -1;
             if (index < 0 || index > 15) return -2; // Example: Invalid index
             if (value < 0 || value > 1) return -3; // Example: Invalid value
@@ -214,7 +214,7 @@ namespace RoboticArmPlugins
 
         public static int cr_set_robotSpeedPercent(object? robotHandle, int percent)
         {
-            LogSdkCall(nameof(cr_set_robotSpeedPercent), robotHandle?.GetHashCode() ?? "null handle", percent);
+            LogSdkCall(nameof(cr_set_robotSpeedPercent), robotHandle?.GetHashCode().ToString() ?? "null handle", percent);
             if (IsHandleInvalid(robotHandle, nameof(cr_set_robotSpeedPercent))) return -1;
             if (percent < 0 || percent > 100) return -2; // Invalid percent
             return 0; // Success
@@ -222,7 +222,7 @@ namespace RoboticArmPlugins
 
         public static int cr_path_recordPara_set(object? robotHandle, RecordPathPara recordPathPara)
         {
-            LogSdkCall(nameof(cr_path_recordPara_set), robotHandle?.GetHashCode() ?? "null handle", recordPathPara);
+            LogSdkCall(nameof(cr_path_recordPara_set), robotHandle?.GetHashCode().ToString() ?? "null handle", recordPathPara);
             if (IsHandleInvalid(robotHandle, nameof(cr_path_recordPara_set))) return -1;
             // Mock setting parameters for path recording
             return 0; // Success
@@ -230,7 +230,7 @@ namespace RoboticArmPlugins
 
         public static int cr_path_control(object? robotHandle, int pathIndex, int controlType)
         {
-            LogSdkCall(nameof(cr_path_control), robotHandle?.GetHashCode() ?? "null handle", pathIndex, controlType);
+            LogSdkCall(nameof(cr_path_control), robotHandle?.GetHashCode().ToString() ?? "null handle", pathIndex, controlType);
             if (IsHandleInvalid(robotHandle, nameof(cr_path_control))) return -1;
             // Mock path control (play, stop, etc.)
             return 0; // Success
@@ -238,7 +238,7 @@ namespace RoboticArmPlugins
 
         public static int cr_move_control(object? robotHandle, int moveControlType)
         {
-            LogSdkCall(nameof(cr_move_control), robotHandle?.GetHashCode() ?? "null handle", moveControlType);
+            LogSdkCall(nameof(cr_move_control), robotHandle?.GetHashCode().ToString() ?? "null handle", moveControlType);
             if (IsHandleInvalid(robotHandle, nameof(cr_move_control))) return -1;
             // Mock move control (e.g., emergency stop)
             return 0; // Success
@@ -246,7 +246,7 @@ namespace RoboticArmPlugins
 
         public static int cr_get_robotStateData(object? robotHandle, out RobotStateData stateData)
         {
-            LogSdkCall(nameof(cr_get_robotStateData), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_get_robotStateData), robotHandle?.GetHashCode().ToString() ?? "null handle");
             stateData = new RobotStateData();
             if (IsHandleInvalid(robotHandle, nameof(cr_get_robotStateData)))
             {
@@ -261,7 +261,7 @@ namespace RoboticArmPlugins
 
         public static int cr_get_jointActualPos(object? robotHandle, out JointPos jointPos)
         {
-            LogSdkCall(nameof(cr_get_jointActualPos), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_get_jointActualPos), robotHandle?.GetHashCode().ToString() ?? "null handle");
             jointPos = new JointPos(); // Initialize with default (e.g., all zeros)
             if (IsHandleInvalid(robotHandle, nameof(cr_get_jointActualPos))) return -1;
             // Populate with mock data
@@ -271,7 +271,7 @@ namespace RoboticArmPlugins
 
         public static int cr_get_tcpActualPose(object? robotHandle, out TcpPose tcpPose)
         {
-            LogSdkCall(nameof(cr_get_tcpActualPose), robotHandle?.GetHashCode() ?? "null handle");
+            LogSdkCall(nameof(cr_get_tcpActualPose), robotHandle?.GetHashCode().ToString() ?? "null handle");
             tcpPose = new TcpPose(); // Initialize with default
             if (IsHandleInvalid(robotHandle, nameof(cr_get_tcpActualPose))) return -1;
             // Populate with mock data
