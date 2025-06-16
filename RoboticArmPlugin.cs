@@ -2,7 +2,7 @@
 using System;
 using System.Globalization; // Required for CultureInfo.InvariantCulture for float parsing
 using System.Linq; // Required for Select and ToArray on string split
-using CorePlatform;
+// using CorePlatform; // This will now come from the DLL
 using RoboticArmPlugins;
 using System.Collections.Generic; // Required for List<T>
 
@@ -15,23 +15,14 @@ public static class RoboticArmSdkConstants
     // Add other SDK-specific constants if they become known
 }
 
-namespace CorePlatform
-{
-    public interface IPlugin
-    {
-        string Name { get; }
-        string Description { get; }
-        void Load();
-        void Unload();
-        void RunTest(System.Action<string> logCallback);
-    }
+// The CorePlatform namespace and its interfaces (IPlugin, IScriptablePlugin)
+// are now assumed to be defined in a separate CorePlatform.dll,
+// which will be referenced by the .csproj file.
+// Ensure 'using CorePlatform;' is present at the top of the file if it's not automatically handled
+// by global usings or if RoboticArmPlugin class needs to explicitly qualify types.
+// For this modification, we ensure 'using CorePlatform;' is active.
 
-    public interface IScriptablePlugin : IPlugin
-    {
-        string? ExecuteScriptCommand(string commandName, string? parameters);
-        string[] GetAvailableScriptCommands();
-    }
-}
+using CorePlatform; // Ensures IPlugin and IScriptablePlugin are resolved from the DLL.
 
 namespace RoboticArmPlugins
 {

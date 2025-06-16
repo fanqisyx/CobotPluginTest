@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>RoboticArmPlugin</AssemblyName> <!-- You can change this if you want a different DLL name -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+    The following is a placeholder reference to CorePlatform.dll.
+    You will need to adjust the HintPath to the actual location of CorePlatform.dll in your environment,
+    or use a ProjectReference if CorePlatform is part of your solution.
+    Ensure CorePlatform.dll is also copied to the WinFormsUI/Plugins directory alongside this plugin's DLL.
+    -->
+    <Reference Include="CorePlatform">
+      <HintPath>Libraries\CorePlatform.dll</HintPath> <!-- Placeholder path -->
+      <Private>false</Private> <!-- Set to true if you want to copy CorePlatform.dll to this plugin's output.
+                                     However, the guide suggests copying it to the main app's Plugins folder. -->
+    </Reference>
+  </ItemGroup>
+
+  <!-- This ensures RoboticArmPlugin.cs is compiled.
+       If your .cs file has a different name or is in a subdirectory, adjust accordingly. -->
+  <ItemGroup>
+    <Compile Include="RoboticArmPlugin.cs" />
+  </ItemGroup>
+
+</Project>
